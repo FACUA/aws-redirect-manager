@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Package for linux" type="BashConfigurationType" factoryName="Bash" singleton="true">
+    <option name="INTERPRETER_OPTIONS" value="" />
+    <option name="INTERPRETER_PATH" value="/bin/bash" />
+    <option name="WORKING_DIRECTORY" value="" />
+    <option name="PARENT_ENVS" value="true" />
+    <option name="SCRIPT_NAME" value="scripts/package-linux.sh" />
+    <option name="PARAMETERS" value="" />
+    <module name="" />
+    <envs />
+    <method>
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Production build" run_configuration_type="GradleRunConfiguration" />
+    </method>
+  </configuration>
+</component>

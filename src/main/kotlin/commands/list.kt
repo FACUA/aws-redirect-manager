@@ -6,10 +6,10 @@ import model.Redirection
 import model.toJSON
 import support.errorHandler
 
-fun list(jsonOutput: Boolean) {
+fun list(jsonOutput: Boolean, rootDomain: String? = null) {
 	errorHandler(
 		Manager
-			.getAllRedirections()
+			.getRedirections(rootDomain)
 			.toList()
 			.map {
 				if (jsonOutput) {
@@ -23,14 +23,20 @@ fun list(jsonOutput: Boolean) {
 
 fun listHelp() {
 	println(
-		"""Lists all existing redirections.
+		"""Lists existing redirections.
 			|
 			|This program considers a redirection when there is an existing S3
 			|bucket with the FQDN of the redirection as its name, it has a
 			|website enabled that redirects to the target URI, and an ALIAS A
 			|record points to that bucket from a hosted zone.
 			|
-			|Usage: aws-redirect-manager list [--json]
+			|Usage: aws-redirect-manager list [domain] [--json]
+			|
+			|Parameters
+			|
+			|   domain    If specified, only redirections from this domain
+			|             will be listed. Otherwise, all existing redirections
+			|             will be listed (may take a long time).
 			|
 			|Options:
 			|

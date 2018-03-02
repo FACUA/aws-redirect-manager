@@ -2,7 +2,7 @@ package commands
 
 fun usage() {
 	println(
-		"""aws-redirect-manager v1.0
+		"""aws-redirect-manager v1.1
 			|A tool to manage Route 53 web redirections.
 			|
 			|Usage: aws-redirect-manager [command]

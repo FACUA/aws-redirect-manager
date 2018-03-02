@@ -79,11 +79,11 @@ This will save your credentials to `~/.aws/credentials`, and
 Then, in order to run the tool, just download it and execute it:
 
 ```sh
-$ wget https://github.com/FACUA/aws-redirect-manager/releases/download/v1.0/aws-redirect-manager
+$ wget https://github.com/FACUA/aws-redirect-manager/releases/download/v1.1/aws-redirect-manager
 $ chmod +x ./aws-redirect-manager
 $ ./aws-redirect-manager
 
-aws-redirect-manager v1.0
+aws-redirect-manager v1.1
 A tool to manage Route 53 web redirections.
 
 Usage: aws-redirect-manager [command]

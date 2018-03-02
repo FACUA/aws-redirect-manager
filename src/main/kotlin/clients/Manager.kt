@@ -8,7 +8,13 @@ import io.reactivex.functions.BiFunction
 import model.Redirection
 
 object Manager {
-	fun getAllRedirections(): Observable<Redirection> = Amazon.getHostedZones()
+	fun getRedirections(
+		rootDomain: String? = null
+	): Observable<Redirection> = Amazon.getHostedZones()
+		// If the root domain is null, get all redirections
+		// If the root domain is not null, get only the redirections
+		// for that domain
+		.filter { rootDomain == null || it.name == "$rootDomain." }
 		.flatMap { Amazon.getHostedZoneRecordSets(it) }
 		.filter { it.type == "A" }
 		.filter { it.aliasTarget != null }
@@ -19,6 +25,7 @@ object Manager {
 			Amazon.getBucketWebsite(bucketName)
 				.map { Pair(bucketName, it) }
 		}
+		.filter { (_, website) -> website.redirectAllRequestsTo != null }
 		.map { (bucketName, website) ->
 			Redirection(bucketName, website.redirectAllRequestsTo.uri)
 		}
@@ -33,7 +40,9 @@ object Manager {
 		.flatMap { Amazon.createHostedZoneRecordSet(fromDomain) }
 		.map { Redirection(fromDomain, "$protocol://$to") }
 
-	fun deleteRedirection(domain: String): Observable<Unit> = Amazon.getHostedZones()
+	fun deleteRedirection(
+		domain: String
+	): Observable<Unit> = Amazon.getHostedZones()
 		.take(1)
 		.flatMap {
 			Observable.combineLatest<Unit, Unit, Unit>(

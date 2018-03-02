@@ -11,7 +11,14 @@ object CommandManager {
 			"list" -> if (help) {
 				listHelp()
 			} else {
-				list(jsonOutput)
+				list(
+					jsonOutput,
+					if (args.size >= 2 && args[1].substring(0, 2) != "--") {
+						args[1]
+					} else {
+						null
+					}
+				)
 			}
 			"create" -> if (help) {
 				createHelp()

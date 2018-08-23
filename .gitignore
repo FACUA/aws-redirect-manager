@@ -175,4 +175,4 @@ gradle-app.setting
 .idea/modules
 .idea/modules.xml
 .idea/libraries
-dist
+out

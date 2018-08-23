@@ -97,3 +97,15 @@ Available commands are:
 
 Run a command with --help to get further help.
 ```
+
+## How to build
+
+You may build the executable by using [Docker](https://www.docker.com/):
+
+```bash
+git clone https://github.com/FACUA/aws-redirect-manager
+cd aws-redirect-manager
+mkdir out
+docker build -t aws-redirect-manager .
+docker run -v "$(pwd)/out":/out aws-redirect-manager
+```

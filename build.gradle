@@ -33,6 +33,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile "com.amazonaws:aws-java-sdk-s3"
     compile "com.amazonaws:aws-java-sdk-route53"
+    compile "com.amazonaws:aws-java-sdk-cloudfront"
+    compile "com.amazonaws:aws-java-sdk-acm"
     compile "io.reactivex.rxjava2:rxkotlin:2.2.0"
     compile "org.json:json:20180130"
     testCompile group: 'junit', name: 'junit', version: '4.12'

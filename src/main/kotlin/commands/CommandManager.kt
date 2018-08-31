@@ -45,6 +45,16 @@ object CommandManager {
 					delete(args[1].trim())
 				}
 			}
+			"enable-https" -> if (help) {
+				enableHttpsHelp()
+			} else {
+				if (args.isEmpty()) {
+					println("Error: not enough arguments specified.\n")
+					enableHttpsHelp()
+				} else {
+					enableHttps(args[1].trim())
+				}
+			}
 			else -> usage()
 		}
 	}

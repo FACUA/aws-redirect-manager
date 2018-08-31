@@ -11,11 +11,17 @@ fun list(jsonOutput: Boolean, rootDomain: String? = null) {
 		Manager
 			.getRedirections(rootDomain)
 			.toList()
-			.map {
+			.map { redirections ->
 				if (jsonOutput) {
-					it.map(Redirection::toJSON).toJSONArray().toString(4)
+					redirections
+						.map(Redirection::toJSON)
+						.toJSONArray()
+						.toString(4)
 				} else {
-					it.joinToString("\n") { "${it.fromFQDN} --> ${it.toURI}" }
+					redirections
+						.joinToString("\n") {
+							"${it.fromFQDN} --> ${it.toURI}"
+						}
 				}
 			}
 	)
